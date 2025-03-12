@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulačka Mzdy</title>
+  <!-- External libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+  <script src="assets/fonts/fonts.js"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="calculator">
+    <h1>Kalkulačka Mzdy</h1>
+    <div class="mode-selector">
+      <button onclick="switchMode('single')">Hrubá mzda</button>
+      <button onclick="switchMode('lines')">Hodinová mzda</button>
+    </div>
+
+    <div class="input-container">
+      <!-- Single Mode -->
+      <div id="singleInputMode" class="hidden">
+        <input type="number" id="singleInputX" placeholder="Zadejte hrubou mzdu" />
+        <button onclick="calculateSingleMode()">Vypočítat</button>
+      </div>
+
+      <!-- Hourly Mode -->
+      <div id="lineFieldsMode" class="hidden">
+        <div id="linesContainer"></div>
+        <button onclick="addLine()">+ Přidat řádek</button>
+        <button onclick="calculateLineMode()">Vypočítat</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="results">
+    <h2>Výsledky</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Položka</th>
+          <th>Hodnota (Kč)</th>
+        </tr>
+      </thead>
+      <tbody id="resultsTable">
+        <tr>
+          <td><b>Hrubá mzda</b></td>
+          <td id="grossWage">-</td>
+        </tr>
+        <tr>
+          <td>Sociální a nemocenské pojištění (zaměstnanec)</td>
+          <td id="socialEmployee">-</td>
+        </tr>
+        <tr>
+          <td>Zdravotní pojištění (zaměstnanec)</td>
+          <td id="healthEmployee">-</td>
+        </tr>
+        <tr>
+          <td>Záloha na daň beze slev</td>
+          <td id="taxWithoutReduction">-</td>
+        </tr>
+        <tr>
+          <td>Záloha na daň</td>
+          <td id="taxWithReduction">-</td>
+        </tr>
+        <tr>
+          <td><b>Čistý měsíční příjem</b></td>
+          <td id="netIncome">-</td>
+        </tr>
+        <tr>
+          <td>Sociální pojištění (zaměstnavatel)</td>
+          <td id="socialEmployer">-</td>
+        </tr>
+        <tr>
+          <td>Zdravotní pojištění (zaměstnavatel)</td>
+          <td id="healthEmployer">-</td>
+        </tr>
+        <tr>
+          <td><b>Celkové náklady zaměstnavatele</b></td>
+          <td id="totalEmployerCost">-</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button id="exportButton">Exportovat jako PDF</button>
+
+  <!-- Custom scripts -->
+  <script src="js/calculator.js"></script>
+  <script src="js/pdf-export.js"></script>
+</body>
+</html>
