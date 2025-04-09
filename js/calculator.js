@@ -59,12 +59,15 @@ function calculateLineMode() {
 
 // Update the results table
 function updateTable(grossWage) {
-  const socialEmployee = grossWage * 0.065;
+  const ztpCheckbox = document.getElementById("ztpDiscount");
+  const ztpDiscountValue = ztpCheckbox.checked ? 1345 : 0;
+  const totalTaxDiscount = taxDiscount + ztpDiscountValue;
+
+  const socialEmployee = grossWage * 0.071;
   const healthEmployee = grossWage * 0.045;
   const socialEmployer = grossWage * 0.248;
   const healthEmployer = grossWage * 0.09;
-  const taxBase = grossWage - socialEmployee - healthEmployee;
-  const tax = Math.max(taxBase * 0.15 - taxDiscount, 0);
+  const tax = Math.max(grossWage * 0.15 - totalTaxDiscount, 0);
   const netIncome = grossWage - socialEmployee - healthEmployee - tax;
   const totalEmployerCost = grossWage + socialEmployer + healthEmployer;
 

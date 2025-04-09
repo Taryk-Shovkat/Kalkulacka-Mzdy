@@ -276,4 +276,33 @@ button:hover {
   .line input {
     flex: 1 1 40%;
   }
+}
+
+/* ZTP/P Discount Checkbox Styles */
+.ztp-discount {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center align the content */
+  gap: 10px; /* Space between checkbox and label */
+  margin-bottom: 20px; /* Add some space below */
+  width: 100%; /* Occupy available width */
+  max-width: 450px; /* Align with other input fields width */
+  margin-left: auto; /* Center the container */
+  margin-right: auto; /* Center the container */
+}
+
+.ztp-discount input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary-color); /* Use theme color */
+  cursor: pointer;
+  margin: 0; /* Reset margin */
+  flex-shrink: 0; /* Prevent checkbox from shrinking */
+}
+
+.ztp-discount label {
+  font-size: 15px;
+  color: var(--light-text); /* Use theme text color */
+  cursor: pointer;
+  margin: 0; /* Reset margin */
 } 
